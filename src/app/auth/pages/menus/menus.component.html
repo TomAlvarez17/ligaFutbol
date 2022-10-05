@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg bg-primary fixed-top">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" [routerLink]="['/pages/torneos']" style="color:white">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/LIGA_MX.png" alt="" width="30" height="30">
+            Liga MX
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse position-absolute end-0">
+            <ul class="navbar-nav">
+                <a class="nav-link" [routerLink]="['/pages/torneos']">Torneos</a>
+                <a class="nav-link" [routerLink]="['/pages/jugadores']">Jugadores</a>
+                <a class="nav-link" [routerLink]="['/pages/equipos']">Equipos</a>
+                <a class="nav-link" [routerLink]="['/pages/arbitros']">Arbitros</a>
+                <a class="nav-link" [routerLink]="['/pages/partidos']">Partidos</a>
+                <a class="nav-link" [routerLink]="['/login']">Cuenta</a>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+
+<aside>
+
+    <div class="contenedor">
+        <ul class="navbar-nav">
+            <a class="nav" [routerLink]="['/pages/torneos']"> <i class="fa-solid fa-trophy"></i> Torneos</a>
+            <a class="nav" [routerLink]="['/pages/jugadores']"> <i class="fa-solid fa-user"></i> Jugadores</a>
+            <a class="nav" [routerLink]="['/pages/equipos']"> <i class="fa-solid fa-users"></i> Equipos</a>
+            <a class="nav" [routerLink]="['/pages/arbitros']"> <i class="fa-solid fa-flag"></i> Arbitros</a>
+            <a class="nav" [routerLink]="['/pages/partidos']"> <i class="fa-solid fa-futbol"></i> Partidos</a>
+        </ul>
+    </div>
+</aside>

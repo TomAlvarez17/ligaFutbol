@@ -1,0 +1,25 @@
+a.nav-link {
+    color:white;
+}
+
+a.nav{
+    color:white;
+    text-decoration:none;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+i{
+    margin-top: 5px;
+    margin-right: 3px;
+}
+
+aside{
+    background: #29628f;
+    height:90vh;
+    width: 100px;
+    position:fixed;
+    top:58px;
+
+}
+
