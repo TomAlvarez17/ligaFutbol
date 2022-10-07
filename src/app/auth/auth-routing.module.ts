@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'menu', component: MenusComponent },
     
 
-      { path: '**', redirectTo: 'partidos' },
+      { path: '**', redirectTo: 'torneos' },
     ]
   }
 
