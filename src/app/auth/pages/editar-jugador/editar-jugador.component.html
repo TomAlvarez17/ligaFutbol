@@ -7,42 +7,29 @@
         <form (ngSubmit)="guardar()" [formGroup]="Formulario">
 
             <div class="mb-3 ms-3 mt-2 row">
-                <h3>Editar partido</h3>
+                <h3>Editar jugador</h3>
             </div>
 
             <div class="mb-3 ms-3 mt-2 row">
-                <label class="col-sm-3 col-form-label">Equipo Local</label>
+                <label class="col-sm-3 col-form-label">Equipo</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" formControlName="local" placeholder="Equipo Local">
-                    <span class="form-text text-danger" *ngIf="campoEsValido('local')">
+                    <input type="text" class="form-control" formControlName="equipo" placeholder="Equipo">
+                    <span class="form-text text-danger" *ngIf="campoEsValido('equipo')">
                         Este campo es obligatorio y debe de contener menos de 50 letras
                     </span>
                 </div>
             </div>
 
             <div class="mb-3 ms-3 mt-2 row">
-                <label class="col-sm-3 col-form-label">Equipo Visitante</label>
+                <label class="col-sm-3 col-form-label">Jugador</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" formControlName="visita"
-                        placeholder="Equipo Visitante">
-                    <span class="form-text text-danger" *ngIf="campoEsValido('visita')">
+                    <input type="text" class="form-control" formControlName="jugador"
+                        placeholder="Jugador">
+                    <span class="form-text text-danger" *ngIf="campoEsValido('jugador')">
                         Este campo es obligatorio y debe de contener menos de 50 letras
                     </span>
                 </div>
             </div>
-
-            <div class="mb-3 ms-3 mt-2 row">
-                <label class="col-sm-3 col-form-label">Arbitro</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" formControlName="arbitro"
-                        placeholder="Arbitro">
-                    <span class="form-text text-danger" *ngIf="campoEsValido('arbitro')">
-                        Este campo es obligatorio y debe de contener menos de 50 letras
-                    </span>
-                </div>
-            </div>
-
-
 
             <div class="d-flex flex-row-reverse">
 

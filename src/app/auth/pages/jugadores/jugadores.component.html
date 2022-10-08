@@ -9,23 +9,21 @@
                 <img class="principal1" src="https://cdn-icons-png.flaticon.com/512/7711/7711842.png" width="150" height="150">
             </div>
             <div class="texto">
-                <button class="btn btn-secondary" type="submit" style="color:white"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn-secondary" [routerLink]="['/pages/agregarjugador']" type="submit" style="color:white"><i class="fa-solid fa-plus"></i></button>
 
                 <h3>Agregar jugador</h3>
             </div>
         </div>
             
-        <div class="vista" *ngFor="let L of Lista">  
+        <div class="vista" *ngFor="let L of Lista" [routerLink]="['/pages/editarjugador', L.id]">  
             <div class="imagen">
-                <img class="principal"  width="300" height="200">
+                <img class="principal" src="https://static1.abc.es/media/bienestar/2019/09/17/futbol-1-kU3C--1200x630@abc.jpg" width="300" height="200">
             </div>
             <div class="texto">
-                <h5>Hola</h5>
-                <h6>{{L.hora}}</h6>
-                <p>{{L.fecha | date: "d-MMMM-y"}}</p>
+                <h6>{{L.jugador}}</h6>
+                <p>{{L.equipo}}</p>
             </div>
         </div>
-
 
     </div>
     

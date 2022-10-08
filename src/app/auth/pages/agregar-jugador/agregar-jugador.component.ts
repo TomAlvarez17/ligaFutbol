@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { ConexionService } from '../../services/conexion.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-agregar-partidos',
-  templateUrl: './agregar-partidos.component.html',
-  styleUrls: ['./agregar-partidos.component.css']
+  selector: 'app-agregar-jugador',
+  templateUrl: './agregar-jugador.component.html',
+  styleUrls: ['./agregar-jugador.component.css']
 })
-export class AgregarPartidosComponent implements OnInit {
+export class AgregarJugadorComponent implements OnInit {
 
   Formulario: FormGroup = this.fb.group({
-    arbitro: [, [Validators.required, Validators.maxLength(50)]],
-    local: [, [Validators.required, Validators.maxLength(50)]],
-    visita: [, [Validators.required, Validators.maxLength(50)]],
+    equipo: [, [Validators.required, Validators.maxLength(50)]],
+    jugador: [, [Validators.required, Validators.maxLength(50)]],
   });
 
   constructor(private fb: FormBuilder, private conexion: ConexionService,  private router: Router ) { }
@@ -28,7 +27,7 @@ export class AgregarPartidosComponent implements OnInit {
   }
 
   guardar() {
-    this.conexion.Post('liga', 'InsertPartido', this.Formulario.value).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'InsertJugador', this.Formulario.value).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
@@ -40,7 +39,7 @@ export class AgregarPartidosComponent implements OnInit {
 
         this.Formulario.reset();
         // this.obtenerRegistro(dato['id']);
-        this.router.navigate(['pages/partidos']);
+        this.router.navigate(['pages/jugadores']);
       }
 
     })
@@ -51,6 +50,5 @@ export class AgregarPartidosComponent implements OnInit {
   //     console.log(dato);
   //   });
   // }
-
 
 }

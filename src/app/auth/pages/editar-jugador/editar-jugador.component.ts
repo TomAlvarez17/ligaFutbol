@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ConexionService } from '../../services/conexion.service';
 
+
 @Component({
-  selector: 'app-editar-partidos',
-  templateUrl: './editar-partidos.component.html',
-  styleUrls: ['./editar-partidos.component.css']
+  selector: 'app-editar-jugador',
+  templateUrl: './editar-jugador.component.html',
+  styleUrls: ['./editar-jugador.component.css']
 })
-export class EditarPartidosComponent implements OnInit {
+export class EditarJugadorComponent implements OnInit {
 
   Formulario: FormGroup = this.fb.group({
     id:[],
-    arbitro: [, [Validators.required, Validators.maxLength(50)]],
-    local: [, [Validators.required, Validators.maxLength(50)]],
-    visita: [, [Validators.required, Validators.maxLength(50)]],
+    equipo: [, [Validators.required, Validators.maxLength(50)]],
+    jugador: [, [Validators.required, Validators.maxLength(50)]],
   });
 
   constructor(private fb: FormBuilder, private conexion: ConexionService, private router: Router,  private activeRouter: ActivatedRoute) { 
@@ -26,11 +26,11 @@ export class EditarPartidosComponent implements OnInit {
 
 
   obtenerRegistro(id: any) {
-    this.conexion.Post('liga', 'GetIdTPartido', { 'partido_id': id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'GetIdTJugador', { 'jugador_id': id }).subscribe((dato: any) => {
       this.Formulario.patchValue({
         id: dato.id,
-        arbitro: dato.arbitro,
-        local: dato.local
+        equipo: dato.equipo,
+        jugador: dato.jugador
       });
     });
   }
@@ -43,28 +43,28 @@ export class EditarPartidosComponent implements OnInit {
   }
 
   guardar() {
-    this.conexion.Post('liga', 'UpdatePartido', this.Formulario.value).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'UpdateJugador', this.Formulario.value).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
         Swal.fire(
           'Exito!',
-          'Se ha actualizado el partido!',
+          'Se ha actualizado el jugador!',
           'success'
         )
 
-        this.router.navigate(['pages/partidos']);
+        this.router.navigate(['pages/jugadores']);
       }
     });
   }
 
   eliminar(id:any) {
-    this.conexion.Post('liga', 'DeletePartido', { id: id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'DeleteJugador', { id: id }).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
         Swal.fire({
-          title: 'Seguro que quieres eliminar el partido?',
+          title: 'Seguro que quieres eliminar al jugador?',
           text: "Desaparecera de la lista!",
           icon: 'warning',
           showCancelButton: true,
@@ -75,14 +75,15 @@ export class EditarPartidosComponent implements OnInit {
           if (result.isConfirmed) {
             Swal.fire(
               'Eliminado!',
-              'El partido ha sido eliminado con exito',
+              'El jugador ha sido eliminado con exito',
               'success'
             )
-            this.router.navigate(['pages/partidos']);
+            this.router.navigate(['pages/jugadores']);
           }
         })
       }
     });
   }
+
 
 }

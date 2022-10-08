@@ -15,14 +15,12 @@
             </div>
         </div>
             
-        <div class="vista" *ngFor="let L of Lista">  
+        <div class="vista" *ngFor="let L of Lista" [routerLink]="['/pages/editarpartido', L.id]">  
             <div class="imagen">
-                <img class="principal"  width="300" height="200">
+                <img class="principal" src="https://phantom-marca.unidadeditorial.es/cb5ba3ed1691056406c9be02ca8804de/resize/1320/f/jpg/assets/multimedia/imagenes/2021/07/24/16270842687280.jpg" width="300" height="200">
             </div>
             <div class="texto">
-                <h5>{{L.id}}</h5>
-                <h6>{{L.local}}</h6>
-                <p>{{L.visita}}</p>
+                <h6>{{L.local}} vs {{L.visita}}</h6>
                 <p>{{L.arbitro}}</p>
             </div>
         </div>

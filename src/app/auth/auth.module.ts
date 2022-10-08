@@ -10,6 +10,9 @@ import { JugadoresComponent } from './pages/jugadores/jugadores.component';
 import { EquiposComponent } from './pages/equipos/equipos.component';
 import { ArbitrosComponent } from './pages/arbitros/arbitros.component';
 import { AgregarPartidosComponent } from './pages/agregar-partidos/agregar-partidos.component';
+import { EditarEquipoComponent } from './pages/editar-equipo/editar-equipo.component';
+import { AgregarJugadorComponent } from './pages/agregar-jugador/agregar-jugador.component';
+import { EditarJugadorComponent } from './pages/editar-jugador/editar-jugador.component';
 
 
 
@@ -22,7 +25,10 @@ import { AgregarPartidosComponent } from './pages/agregar-partidos/agregar-parti
     JugadoresComponent,
     EquiposComponent,
     ArbitrosComponent,
-    AgregarPartidosComponent
+    AgregarPartidosComponent,
+    EditarEquipoComponent,
+    AgregarJugadorComponent,
+    EditarJugadorComponent
   ],
   imports: [
     CommonModule,
