@@ -9,20 +9,19 @@
                 <img class="principal1" src="https://cdn-icons-png.flaticon.com/512/2629/2629314.png" width="150" height="150">
             </div>
             <div class="texto">
-                <button class="btn btn-secondary" type="submit" style="color:white"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn-secondary" [routerLink]="['/pages/agregartorneo']" type="submit" style="color:white"><i class="fa-solid fa-plus"></i></button>
 
                 <h3>Agregar torneo</h3>
             </div>
         </div>
             
-        <div class="vista" *ngFor="let L of Lista">  
+        <div class="vista" *ngFor="let L of Lista" [routerLink]="['/pages/editartorneo', L.id]">  
             <div class="imagen">
-                <img class="principal"  width="300" height="200">
+                <img class="principal" src="https://iq-study.com/wp-content/uploads/2021/04/tournaments.jpg"  width="300" height="200">
             </div>
             <div class="texto">
-                <h5>Hola</h5>
-                <h6>{{L.hora}}</h6>
-                <p>{{L.fecha | date: "d-MMMM-y"}}</p>
+                <h6>{{L.nombre}}</h6>
+                <p>{{L.fechai | date: "d/M/y"}} - {{L.fechaf | date: "d/M/y"}}</p>
             </div>
         </div>
 

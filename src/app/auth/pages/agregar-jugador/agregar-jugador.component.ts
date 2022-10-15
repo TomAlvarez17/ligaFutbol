@@ -15,6 +15,7 @@ export class AgregarJugadorComponent implements OnInit {
   Formulario: FormGroup = this.fb.group({
     equipo: [, [Validators.required, Validators.maxLength(50)]],
     jugador: [, [Validators.required, Validators.maxLength(50)]],
+    numero: [, [Validators.required, Validators.maxLength(3)]],
   });
 
   constructor(private fb: FormBuilder, private conexion: ConexionService,  private router: Router ) { }

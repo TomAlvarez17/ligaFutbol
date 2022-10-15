@@ -15,6 +15,14 @@
             </div>
         </div>
             
+        <div class="vista" *ngFor="let L of Lista" [routerLink]="['/pages/editarequipo', L.id]">  
+            <div class="imagen">
+                <img class="principal" src="https://futboljobs.com/wp-content/uploads/2019/02/equipo-de-futbol.jpg"  width="300" height="200">
+            </div>
+            <div class="texto">
+                <h5>{{L.nombre}}</h5>
+            </div>
+        </div>
 
 
     </div>

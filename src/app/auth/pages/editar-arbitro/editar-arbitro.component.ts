@@ -6,17 +6,20 @@ import { ConexionService } from '../../services/conexion.service';
 
 
 @Component({
-  selector: 'app-editar-equipo',
-  templateUrl: './editar-equipo.component.html',
-  styleUrls: ['./editar-equipo.component.css']
+  selector: 'app-editar-arbitro',
+  templateUrl: './editar-arbitro.component.html',
+  styleUrls: ['./editar-arbitro.component.css']
 })
-export class EditarEquipoComponent implements OnInit {
+export class EditarArbitroComponent implements OnInit {
 
   Formulario: FormGroup = this.fb.group({
     id:[],
     nombre: [, [Validators.required, Validators.maxLength(40)]],
-    logo: [,]
-  
+    apellidos: [, [Validators.required, Validators.maxLength(40)]],
+    contacto: [, [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+    email: [, Validators.required],
+    fecha: [, Validators.required],
+    posicion: [, [Validators.required, Validators.maxLength(40)]],
   });
 
   constructor(private fb: FormBuilder, private conexion: ConexionService, private router: Router,  private activeRouter: ActivatedRoute) { 
@@ -27,11 +30,15 @@ export class EditarEquipoComponent implements OnInit {
 
 
   obtenerRegistro(id: any) {
-    this.conexion.Post('liga', 'GetIdEquipo', { 'equipo_id': id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'GetIdArbitro', { 'arbitro_id': id }).subscribe((dato: any) => {
       this.Formulario.patchValue({
         id: dato.id,
         nombre: dato.nombre,
-        logo: dato.logo,
+        apellidos: dato.apellidos,
+        contacto: dato.contacto,
+        email: dato.email,
+        fecha: dato.fecha,
+        posicion: dato.posicion
       });
     });
   }
@@ -44,7 +51,7 @@ export class EditarEquipoComponent implements OnInit {
   }
 
   guardar() {
-    this.conexion.Post('liga', 'UpdateEquipo', this.Formulario.value).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'UpdateArbitro', this.Formulario.value).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
@@ -54,13 +61,13 @@ export class EditarEquipoComponent implements OnInit {
           'success'
         )
 
-        this.router.navigate(['pages/equipos']);
+        this.router.navigate(['pages/arbitros']);
       }
     });
   }
 
   eliminar(id:any) {
-    this.conexion.Post('liga', 'DeleteEquipo', { id: id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'DeleteArbitro', { id: id }).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
@@ -79,7 +86,7 @@ export class EditarEquipoComponent implements OnInit {
               'El registro ha sido eliminado con exito',
               'success'
             )
-            this.router.navigate(['pages/equipos']);
+            this.router.navigate(['pages/arbitros']);
           }
         })
       }

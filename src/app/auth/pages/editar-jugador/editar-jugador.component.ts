@@ -16,6 +16,7 @@ export class EditarJugadorComponent implements OnInit {
     id:[],
     equipo: [, [Validators.required, Validators.maxLength(50)]],
     jugador: [, [Validators.required, Validators.maxLength(50)]],
+    numero: [, [Validators.required, Validators.maxLength(3)]],
   });
 
   constructor(private fb: FormBuilder, private conexion: ConexionService, private router: Router,  private activeRouter: ActivatedRoute) { 
@@ -26,11 +27,13 @@ export class EditarJugadorComponent implements OnInit {
 
 
   obtenerRegistro(id: any) {
-    this.conexion.Post('liga', 'GetIdTJugador', { 'jugador_id': id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'GetIdTJugador', { 'id': id }).subscribe((dato: any) => {
+      console.log(dato);
       this.Formulario.patchValue({
         id: dato.id,
         equipo: dato.equipo,
-        jugador: dato.jugador
+        jugador: dato.jugador,
+        numero: dato.numero
       });
     });
   }
@@ -58,32 +61,6 @@ export class EditarJugadorComponent implements OnInit {
     });
   }
 
-  eliminar(id:any) {
-    this.conexion.Post('liga', 'DeleteJugador', { id: id }).subscribe((dato: any) => {
-      console.log(dato);
-      if (dato['estatus']) {
-
-        Swal.fire({
-          title: 'Seguro que quieres eliminar al jugador?',
-          text: "Desaparecera de la lista!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Eliminar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire(
-              'Eliminado!',
-              'El jugador ha sido eliminado con exito',
-              'success'
-            )
-            this.router.navigate(['pages/jugadores']);
-          }
-        })
-      }
-    });
-  }
 
 
 }

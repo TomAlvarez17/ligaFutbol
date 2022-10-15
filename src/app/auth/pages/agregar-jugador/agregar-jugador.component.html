@@ -31,6 +31,17 @@
                 </div>
             </div>
 
+            <div class="mb-3 ms-3 mt-2 row">
+                <label class="col-sm-3 col-form-label">Numero</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="numero"
+                        placeholder="Numero">
+                    <span class="form-text text-danger" *ngIf="campoEsValido('numero')">
+                        Este campo es obligatorio y debe de contener maximo 3 numeros
+                    </span>
+                </div>
+            </div>
+
             <div class="d-flex flex-row-reverse">
 
                 <button type="submit" [disabled]="!Formulario.valid" class="btn btn-outline-success">

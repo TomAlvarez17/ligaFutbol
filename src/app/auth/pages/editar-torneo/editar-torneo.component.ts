@@ -6,17 +6,17 @@ import { ConexionService } from '../../services/conexion.service';
 
 
 @Component({
-  selector: 'app-editar-equipo',
-  templateUrl: './editar-equipo.component.html',
-  styleUrls: ['./editar-equipo.component.css']
+  selector: 'app-editar-torneo',
+  templateUrl: './editar-torneo.component.html',
+  styleUrls: ['./editar-torneo.component.css']
 })
-export class EditarEquipoComponent implements OnInit {
+export class EditarTorneoComponent implements OnInit {
 
   Formulario: FormGroup = this.fb.group({
     id:[],
     nombre: [, [Validators.required, Validators.maxLength(40)]],
-    logo: [,]
-  
+    fechai: [, Validators.required],
+    fechaf: [, Validators.required],
   });
 
   constructor(private fb: FormBuilder, private conexion: ConexionService, private router: Router,  private activeRouter: ActivatedRoute) { 
@@ -27,11 +27,13 @@ export class EditarEquipoComponent implements OnInit {
 
 
   obtenerRegistro(id: any) {
-    this.conexion.Post('liga', 'GetIdEquipo', { 'equipo_id': id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'GetIdTorneo', { 'torneo_id': id }).subscribe((dato: any) => {
       this.Formulario.patchValue({
         id: dato.id,
         nombre: dato.nombre,
-        logo: dato.logo,
+        fechai: dato.fechai,
+        fechaf: dato.fechaf,
+   
       });
     });
   }
@@ -44,7 +46,7 @@ export class EditarEquipoComponent implements OnInit {
   }
 
   guardar() {
-    this.conexion.Post('liga', 'UpdateEquipo', this.Formulario.value).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'UpdateTorneo', this.Formulario.value).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
@@ -54,13 +56,13 @@ export class EditarEquipoComponent implements OnInit {
           'success'
         )
 
-        this.router.navigate(['pages/equipos']);
+        this.router.navigate(['pages/torneos']);
       }
     });
   }
 
   eliminar(id:any) {
-    this.conexion.Post('liga', 'DeleteEquipo', { id: id }).subscribe((dato: any) => {
+    this.conexion.Post('liga', 'DeleteTorneo', { id: id }).subscribe((dato: any) => {
       console.log(dato);
       if (dato['estatus']) {
 
@@ -79,7 +81,7 @@ export class EditarEquipoComponent implements OnInit {
               'El registro ha sido eliminado con exito',
               'success'
             )
-            this.router.navigate(['pages/equipos']);
+            this.router.navigate(['pages/torneos']);
           }
         })
       }

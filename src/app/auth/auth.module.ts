@@ -13,6 +13,11 @@ import { AgregarPartidosComponent } from './pages/agregar-partidos/agregar-parti
 import { EditarEquipoComponent } from './pages/editar-equipo/editar-equipo.component';
 import { AgregarJugadorComponent } from './pages/agregar-jugador/agregar-jugador.component';
 import { EditarJugadorComponent } from './pages/editar-jugador/editar-jugador.component';
+import { AgregarArbitroComponent } from './pages/agregar-arbitro/agregar-arbitro.component';
+import { EditarArbitroComponent } from './pages/editar-arbitro/editar-arbitro.component';
+import { EditarTorneoComponent } from './pages/editar-torneo/editar-torneo.component';
+import { AgregarTorneoComponent } from './pages/agregar-torneo/agregar-torneo.component';
+import { AgregarEquipoComponent } from './pages/agregar-equipo/agregar-equipo.component';
 
 
 
@@ -28,7 +33,12 @@ import { EditarJugadorComponent } from './pages/editar-jugador/editar-jugador.co
     AgregarPartidosComponent,
     EditarEquipoComponent,
     AgregarJugadorComponent,
-    EditarJugadorComponent
+    EditarJugadorComponent,
+    AgregarArbitroComponent,
+    EditarArbitroComponent,
+    EditarTorneoComponent,
+    AgregarTorneoComponent,
+    AgregarEquipoComponent
   ],
   imports: [
     CommonModule,

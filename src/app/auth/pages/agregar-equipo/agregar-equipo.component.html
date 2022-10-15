@@ -7,7 +7,7 @@
         <form (ngSubmit)="guardar()" [formGroup]="Formulario">
 
             <div class="mb-3 ms-3 mt-2 row">
-                <h3>Editar equipo</h3>
+                <h3>Agregar equipo</h3>
             </div>
 
             <div class="mb-3 ms-3 mt-2 row">
@@ -25,7 +25,7 @@
                 <div class="col-sm-9">
                     <input type="file" class="form-control" formControlName="logo" placeholder="Logo">
                     <span class="form-text text-danger" *ngIf="campoEsValido('logo')">
-                        Este campo es obligatorio
+                        <!-- Este campo es obligatorio -->
                     </span>
                 </div>
             </div>
@@ -34,10 +34,6 @@
 
                 <button type="submit" [disabled]="!Formulario.valid" class="btn btn-outline-success">
                     <i class="fa-solid fa-floppy-disk"></i>
-                </button>
-
-                <button type="button" class="btn btn-outline-danger" (click)="eliminar(Formulario.value.id)">
-                    <i class="fa-solid fa-trash-can"></i>
                 </button>
 
             </div>

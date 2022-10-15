@@ -6,26 +6,28 @@
 
         <div class="vista">  
             <div class="imagen">
-                <img class="principal1" src="https://cdn-icons-png.flaticon.com/512/2562/2562785.png" width="150" height="150">
+                <img class="principal1" src="https://cdn-icons-png.flaticon.com/512/6409/6409873.png" width="150" height="150">
             </div>
             <div class="texto">
-                <button class="btn btn-secondary" type="submit" style="color:white"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn-secondary" [routerLink]="['/pages/agregararbitro']" type="submit" style="color:white"><i class="fa-solid fa-plus"></i></button>
 
                 <h3>Agregar arbitro</h3>
             </div>
         </div>
             
-        <div class="vista" *ngFor="let L of Lista">  
+        <div class="vista" *ngFor="let L of Lista" [routerLink]="['/pages/editararbitro', L.id]">  
             <div class="imagen">
-                <img class="principal"  width="300" height="200">
+                <img class="principal" src="https://s.france24.com/media/display/e9e74474-9c1b-11e9-a1ba-005056bff430/w:1280/p:4x3/var_copa.jpg" width="300" height="200">
             </div>
             <div class="texto">
-                <h5>Hola</h5>
-                <h6>{{L.hora}}</h6>
-                <p>{{L.fecha | date: "d-MMMM-y"}}</p>
+                <h6>{{L.nombre}} {{L.apellidos}}</h6>
+                <p>{{L.posicion}}</p>
+                <p>{{L.contacto}} 
+                {{L.email}}</p>
+                
+              
             </div>
         </div>
-
 
     </div>
     

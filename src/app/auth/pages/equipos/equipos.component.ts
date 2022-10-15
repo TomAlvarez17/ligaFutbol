@@ -15,7 +15,7 @@ export class EquiposComponent implements OnInit {
   }
 
   obtenerLista() {
-    this.conexion.Get('liga', 'GetAllJugador').subscribe( (dato: any) =>{
+    this.conexion.Get('liga', 'GetAllEquipo').subscribe( (dato: any) =>{
       console.log(dato);
       this.Lista = dato.reverse();
     });
